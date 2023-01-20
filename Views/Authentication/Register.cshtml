@@ -1,0 +1,15 @@
+﻿@model MovieAuth.Models.User
+<form>
+    <div class="form-group">
+        Email Id: @Html.EditorFor(model => model.UserEmail)
+    </div>
+    <div class="form-group">
+        Password: @Html.PasswordFor(model => model.Password)
+    </div>
+    <div class="form-group">
+        Re-Enter Password: <input type="password" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Register" asp-action="RegisterAuth"/>
+    </div>
+</form>

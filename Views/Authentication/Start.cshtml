@@ -1,0 +1,66 @@
+﻿@model MovieAuth.Models.MultipleModels
+<form method="post">
+    <div class="form-group">
+        Email Id: @Html.EditorFor(model => model.UserModel.UserEmail)
+    </div>
+    <div class="form-group">
+        Password: @Html.PasswordFor(model => model.UserModel.Password)
+    </div>
+    <div class="form-group">
+        <a asp-action="Register">New User? Register Here!</a>
+        <input type="submit" value="Login" asp-action="Login"/>
+    </div>
+</form>
+
+
+<br/>
+<br/>
+<br/>
+<h4>Not logged in? Don't worry! You can still view our user's picks!</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieModels.First().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieModels.First().ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieModels.First().Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieModels.First().Price)
+            </th>
+            <th>
+                Created by
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model?.MovieModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
